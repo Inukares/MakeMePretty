@@ -64,3 +64,7 @@ buck-out/
 
 # VS Code
 .vscode
+
+# secrets
+google-services.json
+GoogleService-Info.plist

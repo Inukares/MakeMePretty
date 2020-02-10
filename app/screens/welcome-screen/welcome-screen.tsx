@@ -1,21 +1,16 @@
 import * as React from "react"
-import { View, Image, ViewStyle, TextStyle, ImageStyle, SafeAreaView, ImageBackground } from "react-native"
+import { View, ViewStyle, TextStyle, SafeAreaView } from "react-native"
 import { NavigationInjectedProps } from "react-navigation"
-import { Button, Header, Screen, Text, Wallpaper } from "../../components"
+import { Input } from 'react-native-elements'
+import Icon from 'react-native-vector-icons/FontAwesome'
+import { Button, Header, Screen, Text } from "../../components"
 import { color, spacing } from "../../theme"
-const bowserLogo = require("./bowser.png")
-const model = require("./model.jpg")
-const makeup = require("./makeup.jpg")
+// import { TextInput } from "react-native-gesture-handler"
 
 const FULL: ViewStyle = { flex: 1 }
 const CONTAINER: ViewStyle = {
   backgroundColor: color.transparent,
   paddingHorizontal: spacing[4],
-}
-const MODEL: ImageStyle = {
-  width: "100%",
-  height: "100%",
-  resizeMode: 'cover'
 }
 const TEXT: TextStyle = {
   fontFamily: "Montserrat",
@@ -99,6 +94,20 @@ export const WelcomeScreen: React.FunctionComponent<WelcomeScreenProps> = props 
           <Text style={TITLE} text="!" />
         </Text>
         <Text style={GETSTARTED} preset="header" tx="welcomeScreen.readyForLaunch" />
+        {/* somewhere here I'll add fancy wallpaper probably */}
+        <View>
+          <Input
+            placeholder='INPUT WITH CUSTOM ICON'
+            rightIcon={
+              <Icon
+                name='user'
+                size={24}
+                color={color.dim}
+              />
+            }
+          />
+
+        </View>
 
       </Screen>
       <SafeAreaView style={FOOTER}>

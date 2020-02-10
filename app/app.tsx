@@ -5,6 +5,7 @@
 import "./i18n"
 import React, { useState, useEffect } from "react"
 import { AppRegistry, YellowBox } from "react-native"
+import { ThemeProvider } from 'react-native-elements'
 import { StatefulNavigator, BackButtonHandler, exitRoutes } from "./navigation"
 import { RootStore, RootStoreProvider, setupRootStore } from "./models/root-store"
 
@@ -47,6 +48,11 @@ Object.defineProperty(ReactNative, "AsyncStorage", {
 const canExit = (routeName: string) => contains(routeName, exitRoutes)
 
 /**
+ * Below is a theme object for react-native-elements. It shall be extended for optimal UX.
+ */
+const theme = {}
+
+/**
  * This is the root component of our app.
  */
 export const App: React.FunctionComponent<{}> = () => {
@@ -69,11 +75,13 @@ export const App: React.FunctionComponent<{}> = () => {
 
   // otherwise, we're ready to render the app
   return (
-    <RootStoreProvider value={rootStore}>
-      <BackButtonHandler canExit={canExit}>
-        <StatefulNavigator />
-      </BackButtonHandler>
-    </RootStoreProvider>
+    <ThemeProvider theme={theme}>
+      <RootStoreProvider value={rootStore}>
+        <BackButtonHandler canExit={canExit}>
+          <StatefulNavigator />
+        </BackButtonHandler>
+      </RootStoreProvider>
+    </ThemeProvider>
   )
 }
 

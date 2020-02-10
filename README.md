@@ -1,4 +1,6 @@
-# StarterGucci
+# MakeMeBeauty app
+
+This app requires Firebase setup to run properly.
 
 [![CircleCI](https://circleci.com/gh/infinitered/ignite-bowser.svg?style=svg)](https://circleci.com/gh/infinitered/ignite-bowser)
 

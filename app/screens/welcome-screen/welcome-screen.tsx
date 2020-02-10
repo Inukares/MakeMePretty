@@ -1,17 +1,23 @@
 import * as React from "react"
-import { View, Image, ViewStyle, TextStyle, ImageStyle, SafeAreaView } from "react-native"
+import { View, Image, ViewStyle, TextStyle, ImageStyle, SafeAreaView, ImageBackground } from "react-native"
 import { NavigationInjectedProps } from "react-navigation"
 import { Button, Header, Screen, Text, Wallpaper } from "../../components"
 import { color, spacing } from "../../theme"
 const bowserLogo = require("./bowser.png")
+const model = require("./model.jpg")
+const makeup = require("./makeup.jpg")
 
 const FULL: ViewStyle = { flex: 1 }
 const CONTAINER: ViewStyle = {
   backgroundColor: color.transparent,
   paddingHorizontal: spacing[4],
 }
+const MODEL: ImageStyle = {
+  width: "100%",
+  height: "100%",
+  resizeMode: 'cover'
+}
 const TEXT: TextStyle = {
-  color: color.palette.white,
   fontFamily: "Montserrat",
 }
 const BOLD: TextStyle = { fontWeight: "bold" }
@@ -31,6 +37,7 @@ const HEADER_TITLE: TextStyle = {
 const TITLE_WRAPPER: TextStyle = {
   ...TEXT,
   textAlign: "center",
+  marginTop: spacing[3]
 }
 const TITLE: TextStyle = {
   ...TEXT,
@@ -45,18 +52,19 @@ const ALMOST: TextStyle = {
   fontSize: 26,
   fontStyle: "italic",
 }
-const BOWSER: ImageStyle = {
-  alignSelf: "center",
-  marginVertical: spacing[5],
-  maxWidth: "100%",
-}
-const CONTENT: TextStyle = {
+
+const GETSTARTED: TextStyle = {
   ...TEXT,
-  color: "#BAB6C8",
-  fontSize: 15,
-  lineHeight: 22,
-  marginBottom: spacing[5],
+  ...TITLE,
+  marginTop: spacing[6]
 }
+// const CONTENT: TextStyle = {
+//   ...TEXT,
+//   color: "#BAB6C8",
+//   fontSize: 15,
+//   lineHeight: 22,
+//   marginBottom: spacing[5],
+// }
 const CONTINUE: ViewStyle = {
   paddingVertical: spacing[4],
   paddingHorizontal: spacing[4],
@@ -83,24 +91,15 @@ export const WelcomeScreen: React.FunctionComponent<WelcomeScreenProps> = props 
 
   return (
     <View testID="WelcomeScreen" style={FULL}>
-      <Wallpaper />
-      <Screen style={CONTAINER} preset="scroll" backgroundColor={color.transparent}>
+      <Screen style={CONTAINER} preset="scroll" backgroundColor={color.background}>
         <Header headerTx="welcomeScreen.poweredBy" style={HEADER} titleStyle={HEADER_TITLE} />
         <Text style={TITLE_WRAPPER}>
-          <Text style={TITLE} text="Your new app, " />
-          <Text style={ALMOST} text="almost" />
+          <Text style={TITLE} text="Book your beauty service in" />
+          <Text style={ALMOST} text=" seconds" />
           <Text style={TITLE} text="!" />
         </Text>
-        <Text style={TITLE} preset="header" tx="welcomeScreen.readyForLaunch" />
-        <Image source={bowserLogo} style={BOWSER} />
-        <Text style={CONTENT}>
-          This probably isn't what your app is going to look like. Unless your designer handed you
-          this screen and, in that case, congrats! You're ready to ship.
-        </Text>
-        <Text style={CONTENT}>
-          For everyone else, this is where you'll see a live preview of your fully functioning app
-          using Ignite.
-        </Text>
+        <Text style={GETSTARTED} preset="header" tx="welcomeScreen.readyForLaunch" />
+
       </Screen>
       <SafeAreaView style={FOOTER}>
         <View style={FOOTER_CONTENT}>
